@@ -1,0 +1,9 @@
+{
+    "id": "botble/captcha",
+    "name": "Captcha",
+    "namespace": "Botble\\Captcha\\",
+    "provider": "Botble\\Captcha\\Providers\\CaptchaServiceProvider",
+    "author": "Botble Technologies",
+    "version": "2.1.0",
+    "description": "Captcha for higher security"
+}

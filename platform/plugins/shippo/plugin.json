@@ -1,0 +1,9 @@
+{
+    "id": "botble/shippo",
+    "name": "Shippo",
+    "namespace": "Botble\\Shippo\\",
+    "provider": "Botble\\Shippo\\Providers\\ShippoServiceProvider",
+    "author": "Botble Technologies",
+    "version": "1.0.0",
+    "description": "Multi-Carrier Shippo Shipping Rates & Address Validation for Ecommerce"
+}

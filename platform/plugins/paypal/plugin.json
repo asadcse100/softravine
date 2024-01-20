@@ -1,0 +1,10 @@
+{
+    "id": "botble/paypal",
+    "name": "PayPal Payment Gateway",
+    "namespace": "Botble\\PayPal\\",
+    "provider": "Botble\\PayPal\\Providers\\PayPalServiceProvider",
+    "author": "Botble Technologies",
+    "version": "1.0.0",
+    "description": "PayPal payment gateway integration",
+    "require": ["botble/payment"]
+}
