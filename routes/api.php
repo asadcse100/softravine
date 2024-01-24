@@ -10,3 +10,6 @@
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\LicenseActivationController;
+
+Route::post('/license-activations', [LicenseActivationController::class, 'store']);
