@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Models\LicenseActivation;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LicenseActivationController extends Controller
 {
     public function store(Request $request)
     {
+        dd($request->toArray());
         $request->validate([
             'license_key' => 'required|unique:license_activations,license_key',
         ]);
