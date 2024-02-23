@@ -99,23 +99,46 @@ class DatabaseSettingStore extends SettingStore
         $results = [];
 
         foreach ($data as $row) {
-            if (is_array($row)) {
-                $key = $row['key'];
-                $value = $row['value'];
-            } elseif (is_object($row)) {
-                $key = $row->key;
-                $value = $row->value;
+            if (is_array($row) || is_object($row)) {
+                $key = isset($row['key']) ? $row['key'] : null;
+                $value = isset($row['value']) ? $row['value'] : null;
+        
+                if ($key !== null && $value !== null) {
+                    Arr::set($results, $key, $value);
+                } else {
+                    // Log or handle the case where 'key' or 'value' is missing
+                    logger()->warning('Missing key or value in parseReadData: ' . print_r($row, true));
+                }
             } else {
-                $msg = 'Expected array or object, got ' . gettype($row);
-
-                throw new UnexpectedValueException($msg);
+                // Log unexpected values
+                logger()->warning('Unexpected value in parseReadData: ' . print_r($row, true));
             }
-
-            Arr::set($results, $key, $value);
         }
-
+        
         return $results;
     }
+
+    // public function parseReadData(Collection|array $data): array
+    // {
+    //     $results = [];
+
+    //     foreach ($data as $row) {
+    //         if (is_array($row)) {
+    //             $key = $row['key'];
+    //             $value = $row['value'];
+    //         } elseif (is_object($row)) {
+    //             $key = $row->key;
+    //             $value = $row->value;
+    //         } else {
+    //             $msg = 'Expected array or object, got ' . gettype($row);
+
+    //             throw new UnexpectedValueException($msg);
+    //         }
+
+    //         Arr::set($results, $key, $value);
+    //     }
+    //     return $results;
+    // }
 
     public function delete(array $keys = [], array $except = [])
     {

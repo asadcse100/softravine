@@ -1,0 +1,5 @@
+ALTER TABLE `license_activations` ADD `expaired_at` TIMESTAMP NULL DEFAULT NULL AFTER `updated_at`;
+ALTER TABLE `license_activations` ADD `duration` INT NULL DEFAULT NULL AFTER `expaired_at`;
+ALTER TABLE `license_activations` CHANGE `updated_at` `activated_at` TIMESTAMP NULL DEFAULT NULL;
+
+ALTER TABLE `license_activations` ADD `updated_at` TIMESTAMP NULL DEFAULT NULL AFTER `created_at`;
